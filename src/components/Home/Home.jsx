@@ -1,8 +1,7 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
-import {useNavigate} from 'react-router-dom'
-import { reset, logout } from '../../reducers/loginSlice'
+import React, {useContext} from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import {useNavigate, Link} from 'react-router-dom'
+import { reset, logout } from '../../reducers/Login/loginSlice'
 
 
 
@@ -23,7 +22,11 @@ const navigate = useNavigate()
                 
                 <button onClick={() => dispatch(logout())}>Log out</button>
                 <p>Login succesfull with {user.username} account</p>
-                
+                <Link to={'/gerentes'}>
+                <div style={{border:'1px solid black', width:'30rem', margin:'1rem'}}>
+                    <h3>Gerentes</h3>
+                </div>
+                </Link>
                 
                 </div> : 
             <div>

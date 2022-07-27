@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom'
 import Swal from 'sweetalert2'
 import { useSelector } from 'react-redux/es/exports'
 import styles from './Login.module.css'
-import { login, reset } from '../../reducers/loginSlice'
+import { login, reset } from '../../reducers/Login/loginSlice'
 import { useDispatch } from 'react-redux'
 
 
