@@ -88,6 +88,23 @@ export const SidebarData = [
 
   },
   {
+    title: 'Mesa de Planes',
+    path: '/gerentes',
+    icon: <IoIcons.IoIosPaper />,
+    cName: 'nav-text',
+    options: 
+    [
+      {title: 'Admin Ahorristas Adjudicados', rol:'1.3.1'},
+      {title: 'Scoring', rol:'1.3.2'},
+      {title: 'Haberes Netos', rol:'1.3.3'},
+      {title: 'Gestion de Señas Anuladas', rol:'1.3.5'},
+  
+      {title: 'Autorizador Clasificaciones', rol:'1.3.6'},
+      {title: 'Stock Contable', rol:'1.3.7'},
+      {title: 'Stock Para Ventas', rol:'1.3.8'},
+    ]
+  },
+  {
     title: 'Configuracion de Datos Generales',
     path: '/gerentes',
     icon: <IoIcons.IoIosPaper />,
