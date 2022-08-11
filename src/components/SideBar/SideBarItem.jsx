@@ -4,14 +4,14 @@ import * as AiIcons from 'react-icons/ai';
 import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom';
 
-const SideBarItem = ({item, key}) => {
+const SideBarItem = ({item, index}) => {
 
     const [open, setOpen] = useState(false)
     const {user} = useSelector(
         (state) => state.login)
     return (
         
-    <div /* key={key} */ className={open ? styles.textOpen : styles.text}>
+    <div  key={index}  className={open ? styles.textOpen : styles.text}>
         {/**Si el Item no tiene un rol asignado, es un Menú (Nivel 0) */}
         {
             !item.rol || 
@@ -44,7 +44,7 @@ const SideBarItem = ({item, key}) => {
             item.options.map((item, index) =>
             
             
-                <SideBarItem item={item} /* key={index} *//>
+                <SideBarItem item={item}  index={index} />
 
             
             

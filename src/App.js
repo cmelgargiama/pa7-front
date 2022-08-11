@@ -4,9 +4,12 @@ import Home from './components/Home/Home';
 import SideBar from './components/SideBar/SideBar';
 import './App.css';
 import GerentesTable from './components/GerentesTable/GerentesTable';
-
+import { useSelector } from 'react-redux';
 function App() {
+  const {user} = useSelector(
+    (state) => state.login)
   return (
+    user ?
     <div className="App">
         <SideBar/>
         <Routes>
@@ -22,7 +25,7 @@ function App() {
         
 
         
-    </div>
+    </div> : <Login/>
   );
 }
 

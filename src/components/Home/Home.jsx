@@ -17,21 +17,16 @@ const dispatch = useDispatch()
   return (
     <div>
         
-        {
-            user ? <div>
+        
+             <div>
                 
                 <button onClick={() => dispatch(logout())}>Log out</button>
                 <p>Login succesfull with {user.username} account</p>
 
                 
-                </div> : 
-            <div>
-                You`re not logged yet, <a 
-                href='/login'>
-                    Log in here
-                    </a>
-            </div>
-        }
+                </div>  
+
+        
 
 
     </div>
