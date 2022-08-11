@@ -10,7 +10,7 @@ const SideBarItem = ({item, key}) => {
         
     <div key={key} className={open ? styles.textOpen : styles.text} onClick={() => setOpen(!open)}>
         {
-            !item.rol || user.roles.find(e=> e.rl_codigo === item.rol) ? <div className={styles.sidebarTitle}>
+            !item.rol || user.roles?.find(e=> e.rl_codigo === item.rol) ? <div className={styles.sidebarTitle}>
             <span> 
                 {item.icon}
                 {item.title}

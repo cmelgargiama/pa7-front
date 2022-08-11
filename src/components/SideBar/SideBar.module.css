@@ -103,12 +103,14 @@
   .option{
     color: white;
   }
+
+  /*SCROLL SIDEBAR*/
   .sidebar{
    
       width: 260px;
       flex-shrink: 0;
       background-color: rgba(22, 22, 22, 1);
-      height: 100%;
+      height: 85%;
       overflow: auto;
     
   }
@@ -129,3 +131,4 @@
     width: 1.5em;
     margin-right: 0.2rem;
   }
+  
