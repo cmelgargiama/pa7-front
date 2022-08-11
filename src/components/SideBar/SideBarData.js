@@ -1,11 +1,9 @@
 import React from 'react';
-import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
 import * as IoIcons from 'react-icons/io';
 export const SidebarData = [
   {
     title: 'Operaciones',
-    path: '/',
     icon: <AiIcons.AiFillHome />,
 
     cName: 'nav-text',
@@ -61,7 +59,6 @@ export const SidebarData = [
   },
   {
     title: 'Mora',
-    path: '/gerentes',
     icon: <IoIcons.IoIosPaper />,
     cName: 'nav-text',
     options: 
@@ -88,7 +85,6 @@ export const SidebarData = [
 
   {
     title: 'Call Center',
-    path: '/gerentes',
     icon: <IoIcons.IoIosPaper />,
     cName: 'nav-text',
     options: [
@@ -104,7 +100,6 @@ export const SidebarData = [
   },
   {
     title: 'Personal',
-    path: '/gerentes',
     icon: <IoIcons.IoIosPaper />,
     cName: 'nav-text',
     options: [
@@ -117,7 +112,6 @@ export const SidebarData = [
   },
   {
     title: 'Mesa de Planes',
-    path: '/gerentes',
     icon: <IoIcons.IoIosPaper />,
     cName: 'nav-text',
     options: 
@@ -134,7 +128,6 @@ export const SidebarData = [
   },
   {
     title: 'Configuracion de Datos Generales',
-    path: '/gerentes',
     icon: <IoIcons.IoIosPaper />,
     cName: 'nav-text',
     options: 
@@ -161,7 +154,7 @@ export const SidebarData = [
             {title: 'Alta y Modificacion de Usuarios', rol: '1.7.16.3'},
        ]},
       {title: 'ABM Intereses', rol:'1.7.17'},
-      {title: 'Gerentes', rol:'1.7.18'},
+      {title: 'Gerentes', rol:'1.7.18', path:'/gerentes'},
       {title: 'Team Leader', rol:'1.7.19'},
       {title: 'Estructura Comercial', rol:'1.7.20'},
       {title: 'Entrega Asegurada', rol:'1.7.21'},
@@ -170,7 +163,6 @@ export const SidebarData = [
   },
   {
     title: 'Contabilidad',
-    path: '/gerentes',
     icon: <IoIcons.IoIosPaper />,
     cName: 'nav-text',
     options: 
@@ -284,7 +276,6 @@ export const SidebarData = [
   },
   {
     title: 'Reportes',
-    path: '/gerentes',
     icon: <IoIcons.IoIosPaper />,
     cName: 'nav-text',
     options: 
@@ -302,7 +293,6 @@ export const SidebarData = [
   },
   {
     title: 'Emprendedores',
-    path: '/gerentes',
     icon: <IoIcons.IoIosPaper />,
     cName: 'nav-text',
     options: 
@@ -312,7 +302,6 @@ export const SidebarData = [
   },
   {
     title: 'Usados',
-    path: '/gerentes',
     icon: <IoIcons.IoIosPaper />,
     cName: 'nav-text',
     options: 
@@ -339,7 +328,6 @@ export const SidebarData = [
   },
   {
     title: 'Seguros',
-    path: '/gerentes',
     icon: <IoIcons.IoIosPaper />,
     cName: 'nav-text',
     options: 
