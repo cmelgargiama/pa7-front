@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import styles from './SideBar.module.css'
+import * as AiIcons from 'react-icons/ai';
 import { useSelector } from 'react-redux'
 const SideBarItem = ({item, key}) => {
 
@@ -8,10 +9,15 @@ const SideBarItem = ({item, key}) => {
         (state) => state.login)
     return (
         
-    <div key={key} className={open ? styles.textOpen : styles.text} onClick={() => setOpen(!open)}>
+    <div key={key} className={open ? styles.textOpen : styles.text}>
+        {/**Si le Item no tiene un rol asignado, es un Menú (Nivel 0) */}
         {
-            !item.rol || user.roles?.find(e=> e.rl_codigo === item.rol) ? <div className={styles.sidebarTitle}>
-            <span> 
+            !item.rol || 
+            user.roles?.find(e=> e.rl_codigo === item.rol) || 
+            user.roles?.find(e=> e.rl_codigo === "1") && !item.unique
+            ? <div className={styles.sidebarTitle}>
+            <span>
+                <AiIcons.AiOutlineArrowDown  onClick={() => setOpen(!open)} /> 
                 {item.icon}
                 {item.title}
             </span>
