@@ -11,6 +11,7 @@ const initialState = {
     isSuccess: false,
     isLoading: false,
     message: '',
+    toggle: false
 }
 
 export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
@@ -42,6 +43,9 @@ export const loginSlice = createSlice({
         state.isError = false
         state.message = ''
       },
+      setToggle: (state) => {
+        state.toggle = !state.toggle
+      }
     },
     extraReducers: (builder) => {
         builder
@@ -78,5 +82,5 @@ export const loginSlice = createSlice({
 
 
 
-export const { reset } = loginSlice.actions
+export const { reset, setToggle } = loginSlice.actions
 export default loginSlice.reducer

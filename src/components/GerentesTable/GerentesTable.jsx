@@ -25,7 +25,7 @@ const [lastCode, setLastCode ] = useState({})
   dispatch(getGerentes())
   }, [dispatch])
 
-  /*HANDLE CHANGE DEL FORM */
+  /*----------------------HANDLE CHANGE DEL FORM------------------------------------ */
 const HandleChange = (event) =>{
   const name = event.target.name;
   const value = event.target.value;
@@ -35,12 +35,13 @@ const HandleChange = (event) =>{
     [name]:value}
   )
 }
-
+/*---------------------------------HANDLE SUBMIT FUNCION INSERT---------------------------------*/
 const HandleSubmitInsert = (event) =>{
 event.preventDefault()
 dispatch(postGerentes())
 }
 
+/*---------------------------------HANDLE SUBMIT FUNCION UPDATE---------------------------------*/
 const HandleSubmitUpdate = (event) =>{
   event.preventDefault()
   dispatch(updateGerentes())
@@ -75,19 +76,26 @@ const HandleSubmitUpdate = (event) =>{
                               ?false
                               :true}/> ,
         Filter: ActiveFilter
-      }
+      },
+      {
+        Header: "Modificar",
+        Cell: ({row}) => <button onClick={toggleModificar} className={styles.buttonRows} disabled={modificar || nuevo} {...row.getToggleRowSelectedProps()} ><BiPencil style={{color:"brown"}}/>Modificar</button>,
+      },
+      {
+        Header: "Eliminar",
+        Cell: ({row}) =>  <button className={styles.buttonRows} disabled={modificar || nuevo} {...row.getToggleRowSelectedProps()}><BiXCircle style={{color:"rgb(232, 76, 76)"}}/>Eliminar</button>,
+      },
     ],
     []
   );
   const tableInstance = useTable({ columns: columns, data: gerentes }, useFilters, useRowSelect,
+    // ----------------------------CHECKBOX ROW SELECT-----------------------------------
     (hooks) => {
       hooks.visibleColumns.push((columns)=> {
         return[
           {
           id:'selection',
-          Header:({getToggleAllRowsSelectedProps}) =>(
-            <Checkbox {...getToggleAllRowsSelectedProps()} />
-          ),
+          
           Cell:({row}) => <Checkbox {...row.getToggleRowSelectedProps()}/>, 
           },
            ...columns 
@@ -102,7 +110,6 @@ const HandleSubmitUpdate = (event) =>{
     rows,
     prepareRow,
     selectedFlatRows,
-
   } = tableInstance;
   
 /*RENDER PAGINA GERENTES*/
@@ -133,14 +140,14 @@ const HandleSubmitUpdate = (event) =>{
           {rows.map((row) => {
             prepareRow(row);
             return (
-              <tr  {...row.getRowProps()}>
+              <tr {...row.getToggleRowSelectedProps()}  {...row.getRowProps()}>
                 {row.cells.map((cell) => {
                   return (
-                    <td {...cell.getCellProps()}>{cell.render("Cell")}</td>
+                    <td  {...cell.getCellProps()} >{cell.render("Cell")}</td>
                   );
                 })}
               </tr>
-            );
+            ); 
           })}
         </tbody>
       </table>
@@ -159,7 +166,6 @@ const HandleSubmitUpdate = (event) =>{
           </code>
         </pre>  */}
        <form style={{display: nuevo ? "block" : "none" }} className={styles.formContainer}>
-          <label>Codigo</label><input type="text" style={{width:"6rem" }} name="codigo" onChange={HandleChange} value={(lastObject?.Codigo)+1} />
           <label>Nombre</label><input type="text" style={{width:"20rem" }} name="gerente" onChange={HandleChange} value={form.name} />
           <input type="checkbox" name="activo" onChange={HandleChange}  value={form.activo}/> <label>Activo</label>
           <button onClick={HandleSubmitInsert} ><FcApproval/>Aceptar</button>
@@ -176,8 +182,6 @@ const HandleSubmitUpdate = (event) =>{
         </form>
        <div className={styles.buttonContainer}>
          <button onClick={toggleNuevo}   className={styles.buttonLeft} disabled={modificar || nuevo}><FcSurvey/>Nuevo</button>
-         <button onClick={toggleModificar} className={styles.buttonLeft} disabled={modificar || nuevo}><BiPencil style={{color:"brown"}}/>Modificar</button>
-         <button className={styles.buttonLeft} disabled={modificar || nuevo}><BiXCircle style={{color:"rgb(232, 76, 76)"}}/>Eliminar</button>
          <button className={styles.buttonRight} disabled={modificar || nuevo}><FcDataSheet/>Excel</button>
          <button className={styles.buttonRight} disabled={modificar || nuevo}><BiLogOut/>Salir</button>
         </div>   
