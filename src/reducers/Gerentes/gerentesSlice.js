@@ -42,7 +42,7 @@ export const gerentesSlice = createSlice({
 
     extraReducers: (builder) => {
         builder
-        .addCase(getGerentes.pending, (state) => {
+          .addCase(getGerentes.pending, (state) => {
             state.isLoading = true
           })
           .addCase(getGerentes.fulfilled, (state, action) => {

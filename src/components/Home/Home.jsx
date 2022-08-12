@@ -1,13 +1,13 @@
 import React, {useContext} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import {Link} from 'react-router-dom'
+import styles from './Home.module.css'
 import { reset, logout } from '../../reducers/Login/loginSlice'
 
 
 
 const Home = () => {
     
-const {user } = useSelector(
+const {user, toggle } = useSelector(
         (state) => state.login)
 const dispatch = useDispatch()
 
@@ -18,7 +18,7 @@ const dispatch = useDispatch()
     <div>
         
         
-             <div>
+             <div className={toggle ? styles.HomeSmall : styles.HomeBig}>
                 
                 <button onClick={() => dispatch(logout())}>Log out</button>
                 <p>Login succesfull with {user.username} account</p>
