@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import Swal from 'sweetalert2'
+import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux/es/exports'
 import styles from './Login.module.css'
 import { login, reset } from '../../reducers/Login/loginSlice'
@@ -63,6 +64,7 @@ export const Login = () => {
          <form className={styles.form}>
         <input value={input.login} name='login' onChange={handleChange} className={styles.input} placeholder='User' type="text" />
          <input value={input.password} name='password' onChange={handleChange} className={styles.input} type="password" placeholder='Password'/>
+          <Link to={'/recovery'}>Olvido su contraseña?</Link>
          <button onClick={onSubmit}>Log in</button>
          
          </form>

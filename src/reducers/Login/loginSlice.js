@@ -2,11 +2,13 @@ import { createSlice } from '@reduxjs/toolkit/dist'
 import { createAsyncThunk } from '@reduxjs/toolkit/dist'
 import loginService from './loginService'
 
-
-const user = JSON.parse(localStorage.getItem('user')) 
+const user = JSON.parse(localStorage.getItem('user'))
 
 const initialState = {
     user: user ? user : null,
+    tokenForgot: {status: false},
+    recoveryMessage: null,
+    updateStatus: null,
     isError: false,
     isSuccess: false,
     isLoading: false,
@@ -28,10 +30,55 @@ export const login = createAsyncThunk('auth/login', async (user, thunkAPI) => {
       return thunkAPI.rejectWithValue(error.response.data)
     }
   })
+  export const verify = createAsyncThunk('auth/verify', async (verifyData, thunkAPI) => {
+    try {
+      
+      const session = await loginService.resetPassword(verifyData)
+
+      return session
+    } catch (error) {
+
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(error.response.data)
+    }
+  })
+
+  export const recoveryPass = createAsyncThunk('auth/recovery', async (login, thunkAPI) => {
+    try {
+      
+      const session = await loginService.forgotPassowrd(login)
+
+      return session
+    } catch (error) {
+
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(error.response.data)
+    }
+  })
+
+  export const updatePass = createAsyncThunk('auth/update', async (userData, thunkAPI) => {
+    try {
+      
+      const session = await loginService.updatePassword(userData)
+
+      return session
+    } catch (error) {
+
+        (error.response && error.response.data && error.response.data.message) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(error.response.data)
+    }
+  })
 
   export const logout = createAsyncThunk('auth/logout', async () => {
     return loginService.logout()
    })
+  
 
 export const loginSlice = createSlice({
     name: 'login',
@@ -76,6 +123,47 @@ export const loginSlice = createSlice({
             state.isError = true
             state.message = action.payload
             state.user = state.user
+          })
+          .addCase(verify.pending, (state) => {
+            state.isLoading = true
+          })
+          .addCase(verify.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.isSuccess = true
+            state.tokenForgot = action.payload
+          })
+          .addCase(verify.rejected, (state, action) => {
+            state.isLoading = false
+            state.isError = true
+        
+          })
+          .addCase(recoveryPass.pending, (state) => {
+            state.isLoading = true
+          })
+          .addCase(recoveryPass.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.isSuccess = true
+            state.recoveryMessage = action.payload
+          })
+          .addCase(recoveryPass.rejected, (state, action) => {
+            state.isLoading = false
+            state.isError = true
+            state.recoveryMessage = action.payload
+        
+          })
+          .addCase(updatePass.pending, (state) => {
+            state.isLoading = true
+          })
+          .addCase(updatePass.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.isSuccess = true
+            state.updateStatus = action.payload
+          })
+          .addCase(updatePass.rejected, (state, action) => {
+            state.isLoading = false
+            state.isError = true
+            state.updateStatus = action.payload
+        
           })
     }
 })
