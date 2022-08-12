@@ -13,6 +13,7 @@
   }
   
   .menu {
+    z-index: 1;
     background-color: #060b26;
     width: 250px;
     height: 100vh;
@@ -25,6 +26,7 @@
   }
   
   .menuActive {
+    z-index: 1;
     background-color: #060b26;
     width: 250px;
     height: 100vh;
@@ -123,14 +125,14 @@
       width: 260px;
       flex-shrink: 0;
       background-color: rgba(22, 22, 22, 1);
-<<<<<<< HEAD
+    /*<<<<<<< HEAD*/
       height: 85%;
       overflow: auto;
-=======
+ /*=======*/
       height: 90vh;
       overflow: scroll;
     
->>>>>>> d2e96fcd649ff704bbed544c36265ca2a13bfb1a
+/*>>>>>>> d2e96fcd649ff704bbed544c36265ca2a13bfb1a*/
     
   }
   .sidebarContent{

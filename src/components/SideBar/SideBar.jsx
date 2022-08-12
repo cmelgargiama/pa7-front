@@ -24,7 +24,7 @@ const SideBar = () => {
                 <FaIcons.FaBars onClick={showSideBar}/>
             </Link>
         </div>
-            <nav className={sidebar ? styles.menuActive : styles.menu}>
+            <div className={sidebar ? styles.menuActive : styles.menu}>
                 <div className={styles.menuItems}>
                     <div className={styles.toggle}>
                     <Link to="#" className={styles.menuBars}>
@@ -32,20 +32,16 @@ const SideBar = () => {
                     </Link>
                     </div>
                     <div className={styles.sidebar}>
-
-                   
                     {
                     SidebarData.map((item, index) => {
                         return (
-                                
                                 <SideBarItem item={item} key={index}/>
-                            
                                 )})
                      }
                      </div>         
              
                 </div>
-            </nav>
+            </div>
 
         
     </>
