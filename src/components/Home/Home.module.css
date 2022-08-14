@@ -1,5 +1,7 @@
 .HomeSmall {
-    background-color: aqua;
+    margin-left: 250px;
+    background-color: brown;
+    transition: 1500ms;
 }
 .HomeBig {
     background-color: brown;

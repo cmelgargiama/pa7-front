@@ -13,18 +13,18 @@ const logout = () => {
     localStorage.removeItem('user')
   }
 
-const resetPassword = async (verifyData) => {
+const resetPassword = async (verifyData) => { //Para informar del estado del token al front
   const {id, token} = verifyData
 const response = await axios.get(API_URL + 'auth/tokenStatus' + '/' + id + '/' + token)
 return response.data
 }
 
-const forgotPassowrd = async (login) => {
+const forgotPassowrd = async (login) => { //Para ir a la ruta que genera el mail
   const response = await axios.post(API_URL + 'auth/forgot', {login: login})
   return response.data
 }
 
-const updatePassword = async (userData) => {
+const updatePassword = async (userData) => { //Toma los datos para actualizar la password
   const response = await axios.post(API_URL + 'auth/updatePass', userData)
   return response.data
 }

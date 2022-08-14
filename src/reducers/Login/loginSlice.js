@@ -2,13 +2,13 @@ import { createSlice } from '@reduxjs/toolkit/dist'
 import { createAsyncThunk } from '@reduxjs/toolkit/dist'
 import loginService from './loginService'
 
-const user = JSON.parse(localStorage.getItem('user'))
 
+const user = JSON.parse(localStorage.getItem('user'))
 const initialState = {
     user: user ? user : null,
-    tokenForgot: {status: false},
-    recoveryMessage: null,
-    updateStatus: null,
+    tokenForgot: {status: false}, //Estado del token
+    recoveryMessage: null, //Info sobre si encontramos o no el usuario y le enviamos el mail
+    updateStatus: null, //El mensaje para saber si la pass se actualizo o no
     isError: false,
     isSuccess: false,
     isLoading: false,

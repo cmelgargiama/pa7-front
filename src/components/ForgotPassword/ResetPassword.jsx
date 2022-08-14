@@ -4,7 +4,7 @@ import { verify, updatePass } from "../../reducers/Login/loginSlice";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-export const ForgotPassword = () => {
+export const ResetPassword = () => {
     const dispatch = useDispatch()
    
     React.useEffect(() => {
@@ -17,7 +17,7 @@ export const ForgotPassword = () => {
         token: token
     }
     
-    const {tokenForgot, recoveryMessage} = useSelector(
+    const {tokenForgot, isLoading} = useSelector(
         (state) => state.login)
     
     const [input, setInput]= useState({
@@ -36,7 +36,7 @@ export const ForgotPassword = () => {
         const userData = {
             newPass: input.password, 
             confirmPass: input.confirmPassword, 
-            id: id //Que pida el ID
+            id: id 
         }
         dispatch(updatePass(userData))
     }
@@ -44,16 +44,27 @@ export const ForgotPassword = () => {
 
 
     return (
-        tokenForgot.status === false ? 
+        
+        tokenForgot.status === false && isLoading === false ? 
         <div><h1>Your token has expired</h1></div> :
         <div>
-            <h1>Forgot Password</h1>
-            <form>
+            <div>
+                {
+                isLoading ? <h1>...Loading</h1> : 
+                <div>
+                <h1>Reset Password</h1>
+                <form>
 
                 <input type="text" value={input.password} name="password" onChange={handleChange}  placeholder="Nueva contraseña"/>
                 <input type="text" value={input.confirmPassword} name="confirmPassword" onChange={handleChange}   placeholder="Confirmar contraseña" />
                 <button type="submit" onClick={onSubmit}>Enviar</button>
             </form>
+                </div>
+                
+                
+                }
+                </div>
+            
         </div> 
     )
 }
