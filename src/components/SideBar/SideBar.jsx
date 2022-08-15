@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { setToggle } from '../../reducers/Login/loginSlice.js'
+import { setToggle,  logout  } from '../../reducers/Login/loginSlice.js'
 import {SidebarData} from './SideBarData.js'
 import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
@@ -31,6 +31,7 @@ const SideBar = () => {
             <Link to="#" className={styles.menuBars}>
                 <FaIcons.FaBars onClick={showSideBar}/>
             </Link>
+            <button className={styles.logOut} onClick={() => dispatch(logout())}>Log out</button>
         </div>
             <nav className={sidebar ? styles.menuActive : styles.menu}>
                 <div className={styles.menuItems}>
@@ -40,7 +41,11 @@ const SideBar = () => {
                     </Link>
                     </div>
                     <div className={styles.sidebar}>
-
+                        <div className={styles.username}>
+                            <AiIcons.AiOutlineUser className={styles.username}/>
+                            <h3 className={styles.username}>{user.username}</h3>
+                        </div>
+                        
                    
                     {
                     SidebarData.map((item, index) => {
