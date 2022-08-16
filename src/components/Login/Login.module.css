@@ -1,12 +1,34 @@
-
+.container {
+    text-align: center;
+}
 .form{
     
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 5rem;
 }
 .input{
     width: 15rem;
     padding: 0.5rem;
     margin: 1rem;
+}
+
+.forgotLink {
+
+    text-decoration: none;
+}
+
+.buttonSubmit {
+    margin-top: 2rem;
+    width: 6rem;
+    padding: 0.5rem;
+    border: none;
+    background-color: darkblue;
+    color: white;
+}
+
+.buttonSubmit:hover{
+    background-color: aquamarine;
+    color: black;
 }
