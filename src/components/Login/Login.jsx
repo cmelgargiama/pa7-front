@@ -64,8 +64,8 @@ export const Login = () => {
          <form className={styles.form}>
         <input value={input.login} name='login' onChange={handleChange} className={styles.input} placeholder='User' type="text" />
          <input value={input.password} name='password' onChange={handleChange} className={styles.input} type="password" placeholder='Password'/>
-          <Link to={'/recovery'}>Olvido su contraseña?</Link>
-         <button onClick={onSubmit}>Log in</button>
+          <Link to={'/recovery'} className={styles.forgotLink}>Olvido su contraseña?</Link>
+         <button onClick={onSubmit} className={styles.buttonSubmit}>Log in</button>
          
          </form>
       
